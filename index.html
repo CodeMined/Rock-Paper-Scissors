@@ -8,8 +8,6 @@
 </head>
 <body>
     <script>
-        let humanScore = 0;
-        let computerScore = 0;
         
         // Random computer generated rock paper or scissors
         // Randomize  a result between 1, 2, and 3
@@ -39,32 +37,37 @@
             if (humanChoice === "Rock" && computerChoice === "Rock" 
                 || humanChoice === "Paper" && computerChoice === "Paper" 
                 || humanChoice === "Scissors" && computerChoice === "Scissors") {
-                return "Tie! Go again!";
+                console.log( "Tie! Go again!");
             } else if (humanChoice === "Rock" && computerChoice === "Paper") {
                 computerScore += 1;
-                return "You lose! Paper beats rock.";
+                console.log( "You lose! Paper beats rock.");
             } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
                 humanScore += 1;
-                return "You win! Rock beats paper.";
+                console.log( "You win! Rock beats paper.");
             } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
                 computerScore += 1;
-                return "You lose! Scissors beats paper.";
+                console.log( "You lose! Scissors beats paper.");
             } else if (humanChoice === "Paper" && computerChoice === "Rock") {
                 humanScore += 1;
-                return "You win! Paper beats rock.";
-            }else if (humanChoice === "Scissors" && computerChoice === "Rock") {
+                console.log( "You win! Paper beats rock.");
+            } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
                 computerScore += 1;
-                return "You lose! Rock beats scissors.";
+                console.log( "You lose! Rock beats scissors.");
             } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
                 humanScore += 1;
-                return "You win! Scissors beats paper.";
+                console.log( "You win! Scissors beats paper.");
             }
         }
 
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
-        playRound(humanSelection, computerSelection);
+        
+        function playGame() {
+            let humanScore = 0;
+            let computerScore = 0;
+            playRound(humanSelection, computerSelection);
+        }
     </script>
 </body>
 </html>
