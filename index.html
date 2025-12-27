@@ -8,7 +8,29 @@
 </head>
 <body>
     <script>
-        console.log("Hello, World!")
+        // Random computer generated rock paper or scissors
+        // Randomize  a result between 1, 2, and 3
+        // Equate each number to each word and return that word
+        function getComputerChoice() {
+            let hand = Math.floor(Math.random() * 3) + 1;
+            if (hand === 1) {
+                return "Rock";
+            } else if (hand === 2) {
+                return "Paper";
+            } else 
+                return "Scissors";
+        }
+
+        function getHumanChoice() {
+            let guess = prompt("Choose ()1)Rock, (2)Paper, or (3)Scissors: ");
+            guess = parseInt(guess);
+            if (guess === 1) {
+                return "Rock";
+            } else if (guess === 2) {
+                return "Paper";
+            } else 
+                return "Scissors";
+        }
     </script>
 </body>
 </html>
