@@ -8,10 +8,6 @@
 </head>
 <body>
     <script>
-        
-        // Random computer generated rock paper or scissors
-        // Randomize  a result between 1, 2, and 3
-        // Equate each number to each word and return that word
         function getComputerChoice() {
             let hand = Math.floor(Math.random() * 3) + 1;
             if (hand === 1) {
@@ -23,7 +19,7 @@
         }
 
         function getHumanChoice() {
-            let guess = prompt("Choose ()1)Rock, (2)Paper, or (3)Scissors: ");
+            let guess = prompt("Choose (1)Rock, (2)Paper, or (3)Scissors: ");
             guess = parseInt(guess);
             if (guess === 1) {
                 return "Rock";
@@ -33,40 +29,54 @@
                 return "Scissors";
         }
 
-        function playRound(humanChoice, computerChoice) {
-            if (humanChoice === "Rock" && computerChoice === "Rock" 
-                || humanChoice === "Paper" && computerChoice === "Paper" 
-                || humanChoice === "Scissors" && computerChoice === "Scissors") {
-                console.log( "Tie! Go again!");
-            } else if (humanChoice === "Rock" && computerChoice === "Paper") {
-                computerScore += 1;
-                console.log( "You lose! Paper beats rock.");
-            } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
-                humanScore += 1;
-                console.log( "You win! Rock beats paper.");
-            } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
-                computerScore += 1;
-                console.log( "You lose! Scissors beats paper.");
-            } else if (humanChoice === "Paper" && computerChoice === "Rock") {
-                humanScore += 1;
-                console.log( "You win! Paper beats rock.");
-            } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
-                computerScore += 1;
-                console.log( "You lose! Rock beats scissors.");
-            } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-                humanScore += 1;
-                console.log( "You win! Scissors beats paper.");
-            }
-        }
-
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
         
         function playGame() {
+            
             let humanScore = 0;
             let computerScore = 0;
-            playRound(humanSelection, computerSelection);
+
+            function playRound(humanChoice, computerChoice) {
+                if (humanChoice === "Rock" && computerChoice === "Rock" 
+                    || humanChoice === "Paper" && computerChoice === "Paper" 
+                    || humanChoice === "Scissors" && computerChoice === "Scissors") {
+                    console.log("Tie! Go again!");
+                } else if (humanChoice === "Rock" && computerChoice === "Paper") {
+                    computerScore += 1;
+                    console.log("You lose! Paper beats rock.");
+                } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
+                    humanScore += 1;
+                    console.log("You win! Rock beats paper.");
+                } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
+                    computerScore += 1;
+                    console.log("You lose! Scissors beats paper.");
+                } else if (humanChoice === "Paper" && computerChoice === "Rock") {
+                    humanScore += 1;
+                    console.log("You win! Paper beats rock.");
+                } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
+                    computerScore += 1;
+                    console.log("You lose! Rock beats scissors.");
+                } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
+                    humanScore += 1;
+                    console.log("You win! Scissors beats paper.");
+                }
+            }
+
+            let n = 1;            
+            while (n < 6) {
+                let humanSelection = getHumanChoice();
+                let computerSelection = getComputerChoice();
+                playRound(humanSelection, computerSelection);
+                n++;
+                console.log(`${humanSelection} - You`);
+                console.log(`${computerSelection} - Computer`);
+            }
+            if (humanScore > computerScore) {
+                console.log(`You won ${humanScore} to ${computerScore}!`);
+            } else if (humanScore < computerScore) {
+                console.log(`You lost ${humanScore} to ${computerScore}`);
+            } else {
+                console.log(`You tied ${humanScore} to ${computerScore}`);
+            }
         }
     </script>
 </body>
